@@ -9,7 +9,7 @@ import attrezz.Attrezzo;
  * @author  L.Mattioli-M.Saravo
  * @see Stanza
  * @see Partita
- * @version base
+ * 
  */
 
 public class Labirinto {
@@ -29,14 +29,18 @@ public class Labirinto {
 		/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
-    	
+		Attrezzo martello = new Attrezzo("martello",4);
+		Attrezzo torcia = new Attrezzo("torcia",2);
+		Attrezzo Chiave = new Attrezzo("chiave",1);
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
 		Stanza aulaN11 = new Stanza("Aula N11");
 		Stanza aulaN10 = new Stanza("Aula N10");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
-		
+		StanzaMagica giardino = new StanzaMagica("giardino",2);
+		StanzaBuia ripostiglio = new StanzaBuia("ripostiglio","torcia");
+		StanzaBloccata aulaN15 = new StanzaBloccata("aulaN15","nord","chiave");
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
 		atrio.impostaStanzaAdiacente("est", aulaN11);
@@ -50,27 +54,42 @@ public class Labirinto {
 		laboratorio.impostaStanzaAdiacente("est", atrio);
 		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 		biblioteca.impostaStanzaAdiacente("sud", atrio);
-
+		laboratorio.impostaStanzaAdiacente("nord", giardino);
+		giardino.impostaStanzaAdiacente("sud", laboratorio);
+		giardino.impostaStanzaAdiacente("est", ripostiglio);
+		ripostiglio.impostaStanzaAdiacente("ovest", giardino);
+		giardino.impostaStanzaAdiacente("ovest", aulaN15);
+		aulaN15.impostaStanzaAdiacente("est", giardino);
+		aulaN15.impostaStanzaAdiacente("nord", aulaN11);
+		aulaN11.impostaStanzaAdiacente("sud",aulaN15 );
         /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
-
+		aulaN11.addAttrezzo(martello);
+		ripostiglio.addAttrezzo(torcia);
+		aulaN15.addAttrezzo(Chiave);
 		// il gioco comincia nell'atrio
         stanzaCorrente = atrio;  
 		stanzaVincente = biblioteca;
     }
 	
-    /* ottiene la stanza vincente del labirinto */
+    /** ottiene la stanza vincente del labirinto
+     * @return stanza vincente
+     * */
     public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}
 
-    /* setta la stanza corrente */
+    /** setta la stanza corrente
+     * @param imposta la stanza corrente
+     * */
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
 	}
 	
-	/* ottine la stanza corrente */
+	/** ottiene la stanza corrente 
+	 *@return stanza corrente
+	 **/
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}

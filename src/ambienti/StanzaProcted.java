@@ -1,50 +1,31 @@
 package ambienti;
+
 import attrezz.Attrezzo;
-import giocatore.Borsa;
 
-/**
- * Classe Stanza - una stanza in un gioco di ruolo.
- * Una stanza e' un luogo fisico nel gioco.
- * E' collegata ad altre stanze attraverso delle uscite.
- * Ogni uscita e' associata ad una direzione.
- * 
- * @author docente di POO 
- * @see Attrezzo
- * @version base
-*/
-
-public class Stanza {
+public class StanzaProcted {
 	
-	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
-	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
+	static final protected int NUMERO_MASSIMO_DIREZIONI = 4;
+	static final protected int NUMERO_MASSIMO_ATTREZZI = 10;
 	
-	private String nome;
-    private Attrezzo[] attrezzi;
-    private int numeroAttrezzi;
-    private Stanza[] stanzeAdiacenti;
-    private int numeroStanzeAdiacenti;
-	private String[] direzioni;
-	private String tipo = "S";
+	protected String nome;
+	protected Attrezzo[] attrezzi;
+	protected int numeroAttrezzi;
+	protected Stanza[] stanzeAdiacenti;
+	protected int numeroStanzeAdiacenti;
+	protected String[] direzioni;
 
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
      * @param nome il nome della stanza
      */
-    public Stanza(String nome) {
+    public StanzaProcted(String nome) {
         this.nome = nome;
         this.numeroStanzeAdiacenti = 0;
         this.numeroAttrezzi = 0;
         this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
         this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
         this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
-    }
-    
-    /** restituisce il tipo della stanza
-     * @return stringa tipo
-     * */
-    public String getTipo () {
-    	return this.tipo;
     }
     
     /**
@@ -71,7 +52,6 @@ public class Stanza {
     /**
      * Restituisce la stanza adiacente nella direzione specificata
      * @param direzione
-     * @return stanza stanza adiacente
      */
 	public Stanza getStanzaAdiacente(String direzione) {
 		if (direzione == null)
@@ -196,23 +176,11 @@ public class Stanza {
 		}
 	}
 
-	/** restituisce le direzioni possibili dalla stanza corrente 
-	 * @return direzioni possibili dalla stanza corrente
-	 * */
+
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
 	    	direzioni[i] = this.direzioni[i];
 	    return direzioni;
     }
-	
-	/** funzione che modifica l'attrezzo 
-	 * @param attrezzo l'attrezzo da modificare
-	 * @return attrezzo l'attrezzo modificato
-	 * */
-	public Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
-		Attrezzo a = null;
-		return a;
-	}
-
 }

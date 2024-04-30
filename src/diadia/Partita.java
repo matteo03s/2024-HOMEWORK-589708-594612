@@ -14,8 +14,10 @@ import giocatore.*;
 public class Partita {
 
 	private boolean finita;
+	private boolean iniziata;
 	
 	public Partita(){
+		this.iniziata = false;
 		this.finita = false;
 		
 	}
@@ -25,14 +27,26 @@ public class Partita {
 	Labirinto labirinto = new Labirinto ();
 	
 	
-	/* ottiene labirinto corrente*/
+	/** ottiene labirinto corrente*/
 	public Labirinto getLabirinto () {
 		return this.labirinto;
 	}
 	
-	/* ottiene giocatore*/
+	/** ottiene giocatore*/
 	public Giocatore getGiocatore () {
 		return this.giocatore;
+	}
+
+	/** imposta la partita come iniziata */
+	public void setIniziata () {
+		this.iniziata = true;
+	}
+	
+	/** vede se la partita è iniziata
+	 * @return true se è iniziata, false altrimenti
+	 */
+	public boolean getIniziata () {
+		return this.iniziata;
 	}
 	
 	/**
@@ -48,15 +62,25 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (giocatore.getCfu() == 0);
+		return finita || vinta() || (!giocatoreIsVivo());
 	}
 
 	/**
 	 * Imposta la partita come finita
-	 *
 	 */
 	public void setFinita() {
 		this.finita = true;
+	}
+	
+	/**
+	 * vede se il giocatore è ancora vivo
+	 * @return true se è vivo, false altrimenti
+	 */
+	public boolean giocatoreIsVivo() {
+		boolean vivo = true;
+		if (this.giocatore.getCfu() == 0)
+			vivo = false;
+		return vivo;
 	}
 
 		
