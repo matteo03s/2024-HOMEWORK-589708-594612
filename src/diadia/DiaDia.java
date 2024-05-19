@@ -107,10 +107,9 @@ public class DiaDia {
 		IO io= new IOConsole();
 		Labirinto lab = new LabirintoBuilder()
 				.addStanzaIniziale("atrio")
-				.addAttrezzo("negro", 2)
-				.addAttrezzo("cacca", 5)
-				.addAttrezzo("luca",2)
-				.addAttrezzo("a" , 1)
+				.addAttrezzo("torcia", 2)
+				.addAttrezzo("chiave", 5)
+				.addAttrezzo("mano",2)
 				.addStanzaVincente("biblioteca")
 				.addAdiacenza("atrio", "biblioteca", "nord")
 				.addStanza("bagno")
