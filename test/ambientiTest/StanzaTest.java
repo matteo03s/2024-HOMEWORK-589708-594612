@@ -47,24 +47,6 @@ public class StanzaTest {
 		assertFalse (this.stanza.addAttrezzo(a1));
 	}
 	
-	/** aggiunta di troppi attrezzi */
-	@Test
-	public void test_AddAttrezzo_Troppi () {
-		this.stanza = new Stanza ("eccessivi");
-		this.stanza.addAttrezzo(a1);
-		this.stanza.addAttrezzo(a2);
-		this.stanza.addAttrezzo(a3);
-		this.stanza.addAttrezzo(a4);
-		this.stanza.addAttrezzo(a5);
-		this.stanza.addAttrezzo(a6);
-		this.stanza.addAttrezzo(a7);
-		this.stanza.addAttrezzo(a8);
-		this.stanza.addAttrezzo(a9);
-		this.stanza.addAttrezzo(a10);
-		Attrezzo a11 = new Attrezzo ("n11", 2);
-		assertFalse (this.stanza.addAttrezzo(a11));
-	}
-	
 	/** rimozione di un attrezzo normale */
 	@Test
 	public void test_RemoveAttrezzo() {

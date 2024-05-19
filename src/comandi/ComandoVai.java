@@ -1,3 +1,11 @@
+/**
+ * Una classe che serve ad eseguire il comando "vai".
+ *
+ * @author  M.Saravo-L.Mattioli
+ * @see Comando
+ * @see IOConsole
+ *
+ */
 package comandi;
 
 import ambienti.*;
@@ -37,6 +45,10 @@ public class ComandoVai implements Comando {
 		if (prossima == null) {
 			console.mostraMessaggio("Direzione inesistente");
 			return;
+		}
+		else if (prossima.getNome().equals(corrente.getNome())) {
+			console.mostraMessaggio("\nla direzione " + this.direzione + 
+					" è bloccata, servirebbe qualcosa per sbloccarla");
 		}
 				
 		partita.getLabirinto().setStanzaCorrente(prossima);		

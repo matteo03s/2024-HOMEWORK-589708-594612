@@ -1,3 +1,11 @@
+/**
+ * Una classe che serve ad eseguire il comando "posa".
+ *
+ * @author  M.Saravo-L.Mattioli
+ * @see Comando
+ * @see IOConsole
+ *
+ */
 package comandi;
 
 import attrezz.Attrezzo;
@@ -9,7 +17,7 @@ public class ComandoPosa implements Comando {
 
 	String nome = "posa";
 	String nomeOggetto;
-	
+
 	/** costruttore con parametro inserito
 	 * @param nome oggetto da posare
 	 * */
@@ -20,7 +28,7 @@ public class ComandoPosa implements Comando {
 	/** costruttore senza parametro */
 	public ComandoPosa () {
 	}
-	
+
 	/** esecuzione comando 
 	 * @param partita corrente
 	 * @param console per inserimento/stampa
@@ -46,7 +54,11 @@ public class ComandoPosa implements Comando {
 					console.mostraMessaggio("la stanza è diventata magica!");
 					a = partita.getLabirinto().getStanzaCorrente().modificaAttrezzo(a);
 					console.mostraMessaggio("l'attrezzo posato si è trasformato in: " + a.getNome() + " (" + a.getPeso() + "kg)");;
-				}			
+				}
+				else if (partita.getLabirinto().getStanzaCorrente().getTipo().equals("MA2")) {
+					a = partita.getLabirinto().getStanzaCorrente().modificaAttrezzo(a);
+					console.mostraMessaggio("l'attrezzo posato si è trasformato in: " + a.getNome() + " (" + a.getPeso() + "kg)");;
+				}
 				console.mostraMessaggio ("hai posato " + a.getNome() + " nella stanza");
 			}
 			else
@@ -54,7 +66,7 @@ public class ComandoPosa implements Comando {
 		}
 		else
 			console.mostraMessaggio ("impossibile posare attrezzo nella stanza");
-		
+
 	}
 
 	/** imposta nome oggetto da posare passato come parametro 

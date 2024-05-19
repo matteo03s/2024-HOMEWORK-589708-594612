@@ -2,8 +2,11 @@ package comandiTest;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import ambienti.Labirinto;
+import ambienti.LabirintoBuilder;
 import ambienti.Stanza;
 import attrezz.*;
 import comandi.Comando;
@@ -15,11 +18,24 @@ import diadiaTest.*;
 
 public class ComandoPosaTest {
 
+	Partita p;
+	Labirinto monolocale;
+
+	@Before
+	public void SetUp () {
+		p = new Partita ();
+		monolocale = new LabirintoBuilder()
+				.addStanzaIniziale("start")
+				.addAttrezzo("pala", 2)
+				.getLabirinto();
+		
+	}
+	
 	/** posa un oggetto consentito e conferma che lo posi davvero */
 	@Test
 	public void test_PosaSuccesso() {
 		
-		Partita p = new Partita ();
+		p = new Partita (monolocale);
 		p.setIniziata();
 		IO io = new IOConsole();
 		
@@ -36,7 +52,7 @@ public class ComandoPosaTest {
 	@Test
 	public void test_PosaInesistente() {
 		
-		Partita p = new Partita ();
+		p = new Partita (monolocale);
 		p.setIniziata();
 		IO io = new IOConsole();
 		
@@ -52,7 +68,7 @@ public class ComandoPosaTest {
 	@Test
 	public void test_PosaTroppoPresto() {
 		
-		Partita p = new Partita ();
+		p = new Partita (monolocale);
 		IO io = new IOConsole();
 		
 		Attrezzo oro = new Attrezzo ("oro", 2);

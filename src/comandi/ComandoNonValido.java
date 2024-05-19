@@ -1,3 +1,11 @@
+/**
+ * Una classe che serve ad "eseguire" un comando non valido.
+ *
+ * @author  M.Saravo-L.Mattioli
+ * @see Comando
+ * @see IOConsole
+ *
+ */
 package comandi;
 
 import diadia.IO;

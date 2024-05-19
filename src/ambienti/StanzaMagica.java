@@ -6,7 +6,7 @@ public class StanzaMagica extends Stanza {
 	final static private int SOGLIA_MAGICA_DEFAULT = 3;
 	private int contatoreAttrezziPosati;
 	private int sogliaMagica;
-	private String tipo = "MA0";
+	private String tipo = "MA";
 
 	/** costruttore con solo nome e con soglia impostata di default
 	 * @param nome della stanza
@@ -33,6 +33,25 @@ public class StanzaMagica extends Stanza {
 		return this.tipo;
 	}
 
+	/** metodo che restituisce le caratteristiche della stanza
+	 * @return la rappresentazione stringa
+	 * */
+	@Override
+	public String toString() {
+		if(super.getTipo().equals("MA1") || super.getTipo().equals("MA2"))
+			return  ("\nla stanza è magica") + super.toString();
+		else
+			return super.toString();
+	}
+
+	/** metodo che restituisce la descrizione della stanza
+	 * @return la descrizione stringa
+	 * */
+	@Override
+	public String getDescrizione() {	
+		return toString();
+	}
+
 	/** funzione che modifica l'attrezzo 
 	 * @param attrezzo l'attrezzo da modificare
 	 * @return attrezzo l'attrezzo modificato
@@ -56,8 +75,12 @@ public class StanzaMagica extends Stanza {
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		this.contatoreAttrezziPosati++;
-		if (this.contatoreAttrezziPosati>this.sogliaMagica) {
+		if (this.contatoreAttrezziPosati==this.sogliaMagica+1) {
 			this.tipo = "MA1";
+			attrezzo = this.modificaAttrezzo(attrezzo);
+		}
+		if (this.contatoreAttrezziPosati>this.sogliaMagica+1) {
+			this.tipo = "MA2";
 			attrezzo = this.modificaAttrezzo(attrezzo);
 		}
 		return super.addAttrezzo(attrezzo);
@@ -71,10 +94,18 @@ public class StanzaMagica extends Stanza {
 	@Override
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 		this.contatoreAttrezziPosati--;
-		if(this.contatoreAttrezziPosati==this.sogliaMagica)
+		if(this.contatoreAttrezziPosati==(this.sogliaMagica))
 			this.tipo = "MA0";
+		if (this.contatoreAttrezziPosati<(this.sogliaMagica))
+			this.tipo = "MA";
 
 		return super.removeAttrezzo(attrezzo);
 	}
+
+	public boolean isMagica() {
+		// TODO Auto-generated method stub
+		return true; //((this.tipo.equals("MA1")) || (this.tipo.equals("MA2")));
+	}
+
 
 }

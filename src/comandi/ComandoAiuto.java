@@ -1,3 +1,11 @@
+/**
+ * Una classe che serve ad eseguire il comando "aiuto".
+ *
+ * @author  M.Saravo-L.Mattioli
+ * @see Comando
+ * @see IOConsole
+ *
+ */
 package comandi;
 
 import diadia.IO;
@@ -6,7 +14,7 @@ import diadiaTest.*;
 
 public class ComandoAiuto implements Comando {
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa", "borsa", "guarda"};
 	String nome = "aiuto";
 
 

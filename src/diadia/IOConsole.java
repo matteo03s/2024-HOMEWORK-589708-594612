@@ -8,6 +8,11 @@ import java.util.Scanner;
  * */
 
 public class IOConsole implements IO{
+	
+	public void mostraMessaggioNoCapo(String msg) {
+		System.out.print(msg);
+	}
+	
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}

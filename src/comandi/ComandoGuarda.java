@@ -1,3 +1,11 @@
+/**
+ * Una classe che serve ad eseguire il comando "guarda".
+ *
+ * @author  M.Saravo-L.Mattioli
+ * @see Comando
+ * @see IOConsole
+ *
+ */
 package comandi;
 
 import diadia.IO;
@@ -7,6 +15,10 @@ import diadiaTest.*;
 public class ComandoGuarda implements Comando {
 
 	String nome = "guarda";
+	
+	/** costruttore senza parametro */
+	public ComandoGuarda () {
+	}
 	
 	/** esecuzione comando 
 	 * @param partita corrente
@@ -24,6 +36,7 @@ public class ComandoGuarda implements Comando {
 	 * */
 	@Override
 	public void setParametro(String parametro) {
+		
 		// corpo vuoto, questo comando non ha parametri
 	}
 

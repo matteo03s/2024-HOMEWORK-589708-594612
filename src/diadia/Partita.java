@@ -15,21 +15,32 @@ public class Partita {
 
 	private boolean finita;
 	private boolean iniziata;
+	private Labirinto labirinto;
 	
 	public Partita(){
 		this.iniziata = false;
 		this.finita = false;
-		
+	}
+	
+	public Partita(Labirinto lab){
+		this.iniziata = false;
+		this.finita = false;
+		this.labirinto = lab;
 	}
 
 	//crea il giocatore e il labirinto
     Giocatore giocatore = new Giocatore ();
-	Labirinto labirinto = new Labirinto ();
+//	Labirinto labirinto = new Labirinto ();
 	
 	
 	/** ottiene labirinto corrente*/
 	public Labirinto getLabirinto () {
 		return this.labirinto;
+	}
+	
+	/** imposta labirinto corrente*/
+	public void setLabirinto (Labirinto lab) {
+		this.labirinto = lab;
 	}
 	
 	/** ottiene giocatore*/

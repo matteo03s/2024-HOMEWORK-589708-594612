@@ -1,3 +1,11 @@
+/**
+ * Una classe che serve ad eseguire il comando "fine".
+ *
+ * @author  M.Saravo-L.Mattioli
+ * @see Comando
+ * @see IOConsole
+ *
+ */
 package comandi;
 
 import diadia.IO;

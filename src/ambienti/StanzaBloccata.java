@@ -13,6 +13,7 @@ public class StanzaBloccata extends Stanza {
 	 * @param direzionebloccata direzione bloccata
 	 * @param chiave nome attrezzo che sblocca la direzione*/
 	public StanzaBloccata(String nome,String direzionebloccata,String chiave) {
+		
 		super(nome);
 		this.direzionebloccata=direzionebloccata;
 		this.chiave=chiave;
@@ -23,6 +24,10 @@ public class StanzaBloccata extends Stanza {
 	 * */
 	@Override
 	public String getTipo () {
+		if (this.hasAttrezzo(chiave))
+			this.tipo = "BL0";
+		else
+			this.tipo = "BL1";
 		return this.tipo;
 	}
 
@@ -44,11 +49,11 @@ public class StanzaBloccata extends Stanza {
 	 *  */
 	@Override
 	public String toString() {
-		if(super.hasAttrezzo(chiave)==false)
+	/*	if(super.hasAttrezzo(chiave)==false)
 			return (this.tipo + "\nla direzione " + this.direzionebloccata + 
 					" è bloccata, servirebbe una " + this.chiave);
 		else
-			return "";
+		*/	return super.toString();
 	}
 
 	/** metodo che restituisce la descrizione della stanza

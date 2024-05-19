@@ -41,6 +41,12 @@ public class DiaDia {
 	public DiaDia(IO io) {
 		this.partita = new Partita();
 		this.console = io;
+	}
+	
+	/** costruttore con labirinto personalizzato*/
+	public DiaDia(IO io, Labirinto lab) {
+		this.partita = new Partita(lab);
+		this.console = io;
 		
 	}
 
@@ -99,7 +105,23 @@ public class DiaDia {
 
 	public static void main(String[] argc) {
 		IO io= new IOConsole();
-		DiaDia gioco = new DiaDia(io);
+		Labirinto lab = new LabirintoBuilder()
+				.addStanzaIniziale("atrio")
+				.addAttrezzo("negro", 2)
+				.addAttrezzo("cacca", 5)
+				.addAttrezzo("luca",2)
+				.addAttrezzo("a" , 1)
+				.addStanzaVincente("biblioteca")
+				.addAdiacenza("atrio", "biblioteca", "nord")
+				.addStanza("bagno")
+				.addAdiacenza("atrio", "bagno", "est")
+				.addAdiacenza("bagno", "atrio", "ovest")
+				.addStanza("ripostiglio")
+				.addAdiacenza("ripostiglio", "bagno","sud")
+				.addAdiacenza("bagno", "ripostiglio", "nord")
+
+				.getLabirinto();
+		DiaDia gioco = new DiaDia(io, lab);
 		gioco.gioca();
 	}
 }
