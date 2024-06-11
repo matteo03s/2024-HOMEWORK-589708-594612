@@ -1,0 +1,11 @@
+Stanze: biblioteca, N10, N11, N20
+Buie: N20 torcia
+Magiche: N10 2, biblioteca 2
+Bloccate:
+Inizio: N10
+Vincente: N11
+Attrezzi: martello 10 biblioteca, pinza 2 N10, torcia 1 N20, chiave 2 biblioteca
+Maghi:
+Cani:
+Streghe:
+Uscite: biblioteca nord N10, biblioteca sud N11, N20 est N10

@@ -7,7 +7,7 @@ import ambienti.*;
 import attrezz.*;
 
 public class StanzaBloccataTest {
-	StanzaBloccata stanza = new StanzaBloccata("stanza","nord","chiave");
+	StanzaBloccata stanza = new StanzaBloccata("stanza",Direzione.nord,"chiave");
 	Attrezzo a1 = new Attrezzo("chiave", 2);
 	Stanza vicina = new Stanza ("vicina");
 	
@@ -55,15 +55,15 @@ public class StanzaBloccataTest {
 	@Test
 	public void test_GetStanzaAdiacente_Valido () {
 		stanza.addAttrezzo(a1);
-		stanza.impostaStanzaAdiacente("nord", vicina);
-		assertEquals (stanza.getStanzaAdiacente("nord").getNome(), "vicina" );
+		stanza.impostaStanzaAdiacente(Direzione.nord, vicina);
+		assertEquals (stanza.getStanzaAdiacente(Direzione.nord).getNome(), "vicina" );
 	}
 	
 	/** verifica che la direzione sia bloccata */
 	@Test
 	public void test_GetStanzaAdiacente_NonValido () {
-		stanza.impostaStanzaAdiacente("nord", vicina);
-		assertEquals (stanza.getStanzaAdiacente("nord").getNome(), "stanza" );
+		stanza.impostaStanzaAdiacente(Direzione.nord, vicina);
+		assertEquals (stanza.getStanzaAdiacente(Direzione.nord).getNome(), "stanza" );
 	}
 	
 }

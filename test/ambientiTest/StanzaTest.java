@@ -3,6 +3,7 @@ package ambientiTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import ambienti.Direzione;
 import ambienti.Stanza;
 
 import org.junit.Before;
@@ -78,8 +79,8 @@ public class StanzaTest {
 		this.stanza = new Stanza ("partenza");
 		Stanza vicina = new Stanza ("stanza_adiacente");
 		
-		this.stanza.impostaStanzaAdiacente("sud", vicina);
-		assertEquals (vicina.getNome(), this.stanza.getStanzaAdiacente("sud").getNome());
+		this.stanza.impostaStanzaAdiacente(Direzione.sud, vicina);
+		assertEquals (vicina.getNome(), this.stanza.getStanzaAdiacente(Direzione.sud).getNome());
 	}
 
 	/** test getStanzaAdiacente direzione nulla */
@@ -87,9 +88,9 @@ public class StanzaTest {
 	public void test_getStanzaAdiacente_null () {
 		this.stanza = new Stanza ("partenza");
 		Stanza vicina = new Stanza ("stanza_adiacente");
-		this.stanza.impostaStanzaAdiacente("sud", vicina);
+		this.stanza.impostaStanzaAdiacente(Direzione.sud, vicina);
 		
-		assertEquals (null, this.stanza.getStanzaAdiacente("nord"));	
+		assertEquals (null, this.stanza.getStanzaAdiacente(Direzione.nord));	
 	}
 		
 }

@@ -29,23 +29,23 @@ public class ComandoVaiTest {
 	@Before
 	public void SetUp () {
 		p = new Partita ();
-		monolocale = new LabirintoBuilder()
+		monolocale = Labirinto.LabirintoBuilder.newBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.getLabirinto();
-		bilocale = new LabirintoBuilder()
+		bilocale = Labirinto.LabirintoBuilder.newBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.addStanzaVincente("biblioteca")
-				.addAdiacenza("start", "biblioteca", "nord")
+				.addAdiacenza("start", "biblioteca", Direzione.nord)
 				.getLabirinto();
-		trilocale = new LabirintoBuilder()
+		trilocale = Labirinto.LabirintoBuilder.newBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.addStanzaVincente("biblioteca")
-				.addAdiacenza("start", "biblioteca", "nord")
+				.addAdiacenza("start", "biblioteca", Direzione.nord)
 				.addStanza("terza")
-				.addAdiacenza("start", "terza", "est")
+				.addAdiacenza("start", "terza", Direzione.est)
 				.getLabirinto();
 		
 	}
@@ -60,8 +60,8 @@ public class ComandoVaiTest {
 	/** conferma che il parametro restituito è lo stesso di quello passato col costruttore*/
 	@Test
 	public void test_GetParametroCostruttore () {
-		Comando c = new ComandoVai ("nord");
-		assertEquals (c.getParametro(), "nord");
+		Comando c = new ComandoVai (Direzione.nord);
+		assertEquals (c.getParametro(), Direzione.nord.toString());
 	}
 	
 	/** conferma che il parametro restituito è lo stesso di quello passato col setter*/
@@ -78,9 +78,9 @@ public class ComandoVaiTest {
 		p = new Partita (trilocale);
 		IO io = new IOConsole();
 		
-		Stanza prossimaAspettata = p.getLabirinto().getStanzaCorrente().getStanzaAdiacente("est");
+		Stanza prossimaAspettata = p.getLabirinto().getStanzaCorrente().getStanzaAdiacente(Direzione.est);
 		
-		ComandoVai est = new ComandoVai ("est");
+		ComandoVai est = new ComandoVai (Direzione.est);
 		est.esegui(p, io);
 		Stanza prossimaEffettiva = p.getLabirinto().getStanzaCorrente();
 				
@@ -92,7 +92,7 @@ public class ComandoVaiTest {
 	public void test_DirezioneVincente() {
 		p = new Partita (bilocale);
 		IO io = new IOConsole();	
-		ComandoVai nord = new ComandoVai ("nord");
+		ComandoVai nord = new ComandoVai (Direzione.nord);
 		nord.esegui(p, io);	
 		assertTrue (p.vinta());	
 	}
@@ -104,7 +104,7 @@ public class ComandoVaiTest {
 		p = new Partita (monolocale);
 		IO io = new IOConsole();
 		
-		ComandoVai nord = new ComandoVai ("nord");
+		ComandoVai nord = new ComandoVai (Direzione.nord);
 		nord.esegui(p, io);
 		
 		Stanza corrente = p.getLabirinto().getStanzaCorrente();

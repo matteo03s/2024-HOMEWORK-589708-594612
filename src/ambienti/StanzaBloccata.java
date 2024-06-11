@@ -4,7 +4,7 @@ import giocatore.Borsa;
 
 public class StanzaBloccata extends Stanza {
 	
-	String direzionebloccata;
+	Direzione direzionebloccata;
 	String chiave;
 	String tipo = "BL0";
 
@@ -12,7 +12,7 @@ public class StanzaBloccata extends Stanza {
 	 * @param nome nome della stanza
 	 * @param direzionebloccata direzione bloccata
 	 * @param chiave nome attrezzo che sblocca la direzione*/
-	public StanzaBloccata(String nome,String direzionebloccata,String chiave) {
+	public StanzaBloccata(String nome,Direzione direzionebloccata,String chiave) {
 		
 		super(nome);
 		this.direzionebloccata=direzionebloccata;
@@ -36,9 +36,9 @@ public class StanzaBloccata extends Stanza {
 	 * @return la stanza se è possibile, altrimenti restituisce la stessa di partenza
 	 * */
 	@Override
-	public Stanza getStanzaAdiacente(String direzione) {
+	public Stanza getStanzaAdiacente(Direzione direzione) {
 
-		if(super.hasAttrezzo(chiave)==false && direzione.equalsIgnoreCase(direzionebloccata)) {			
+		if(super.hasAttrezzo(chiave)==false && direzione.toString().equalsIgnoreCase(direzionebloccata.toString())) {			
 			return StanzaBloccata.this;
 		}
 		return super.getStanzaAdiacente(direzione);
@@ -61,7 +61,7 @@ public class StanzaBloccata extends Stanza {
 	 * */
 	@Override
 	public String getDescrizione() {
-		return super.toString() + this.toString();
+		return this.toString();
 	}
 
 	/** metodo che aggiunge l'attrezzo alla stanza
@@ -98,5 +98,15 @@ public class StanzaBloccata extends Stanza {
 				this.tipo = "BL1";
 		}
 		return rimosso;
+	}
+	
+	@Override
+	public String getChiave () {
+		return this.chiave;
+	}
+	
+	@Override
+	public Direzione getDirBloccata() {
+		return this.direzionebloccata;
 	}
 }

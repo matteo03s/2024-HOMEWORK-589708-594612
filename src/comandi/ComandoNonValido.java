@@ -12,10 +12,13 @@ import diadia.IO;
 import diadia.Partita;
 import diadiaTest.*;
 
-public class ComandoNonValido implements Comando {
+public class ComandoNonValido extends AbstractComando {
 
-	String nome = "comando non valido";
 	
+public ComandoNonValido () {
+	super ("comando non valido");
+		
+	}
 	/** esecuzione comando 
 	 * @param partita corrente
 	 * @param console per inserimento/stampa
@@ -26,29 +29,5 @@ public class ComandoNonValido implements Comando {
 			return;	
 	}
 
-	/** imposta parametro 
-	 * @param parametro comando
-	 * */
-	@Override
-	public void setParametro(String parametro) {
-		// corpo vuoto, questo comando non ha parametri
-	}
-
-	/** restituisce nome comando 
-	 * @return nome comando
-	 * */
-	@Override
-	public String getNome() {
-		return this.nome;
-	}
-
-	/** ottenere parametro 
-	 * @return nome parametro
-	 * */
-	@Override
-	public String getParametro() {
-		//ritorno nullo, questo comando non ha parametri
-		return null;
-	}
 
 }

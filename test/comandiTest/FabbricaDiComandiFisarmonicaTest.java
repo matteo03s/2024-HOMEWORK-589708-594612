@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import comandi.AbstractComando;
 import comandi.Comando;
 import comandi.FabbricaDiComandiFisarmonica;
 import diadia.IO;
@@ -13,9 +14,10 @@ import diadiaTest.*;
 
 public class FabbricaDiComandiFisarmonicaTest {
 
-	/** test comando vai */
+	/** test comando vai 
+	 * @throws Exception */
 	@Test
-	public void test_Vai() {
+	public void test_Vai() throws Exception {
 		Comando c;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
 		c = factory.costruisciComando("vai");
@@ -24,7 +26,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 		
 	/** test comando prendi */
 	@Test
-	public void test_Prendi() {
+	public void test_Prendi() throws Exception{
 		Comando c;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
 		c = factory.costruisciComando("prendi");
@@ -33,7 +35,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 
 	/** test comando posa */
 	@Test
-	public void test_Posa() {
+	public void test_Posa() throws Exception{
 		Comando c;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
 		c = factory.costruisciComando("posa");
@@ -42,7 +44,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 	
 	/** test comando guarda */
 	@Test
-	public void test_Guarda() {
+	public void test_Guarda() throws Exception{
 		Comando c;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
 		c = factory.costruisciComando("guarda");
@@ -51,10 +53,10 @@ public class FabbricaDiComandiFisarmonicaTest {
 	
 	/** test comando sconosciuto */
 	@Test
-	public void test_Sconosciuto() {
+	public void test_Sconosciuto() throws Exception{
 		Comando c;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
-		c = factory.costruisciComando("");
+		c = factory.costruisciComando("efe");
 		assertEquals (c.getNome(), "comando non valido");
 	}
 	
@@ -68,19 +70,35 @@ public class FabbricaDiComandiFisarmonicaTest {
 		assertEquals (c, null);
 	}
 */	
-	
-	/** test comando aiuto */
+	/** test comando saluta */
 	@Test
-	public void test_Aiuto() {
+	public void test_Saluta () throws Exception{
 		Comando c;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
-		c = factory.costruisciComando("aiuto");
-		assertEquals (c.getNome(), "aiuto");
+		c = factory.costruisciComando("interagisci");
+		assertEquals (c.getNome(), "interagisci");
+	}
+	/** test comando interagisci */
+	@Test
+	public void test_Interagisci () throws Exception{
+		Comando c;
+		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
+		c = factory.costruisciComando("saluta");
+		assertEquals (c.getNome(), "saluta");
+	}
+	
+	/** test comando regala */
+	@Test
+	public void test_Regala () throws Exception{
+		Comando c;
+		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
+		c = factory.costruisciComando("regala");
+		assertEquals (c.getNome(), "regala");
 	}
 	
 	/** test comando aiuto parametro */
 	@Test
-	public void test_AiutoParametro() {
+	public void test_AiutoParametro() throws Exception{
 		Comando c;
 		Partita p = new Partita ();
 		IO io = new IOConsole ();
@@ -93,7 +111,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 	
 	/** test comando fine */
 	@Test
-	public void test_Fine() {
+	public void test_Fine() throws Exception{
 		Comando c;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
 		c = factory.costruisciComando("fine");
@@ -102,7 +120,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 	
 	/** test comando fine che effettivamente finisca la partita */
 	@Test
-	public void test_FineFinita() {
+	public void test_FineFinita() throws Exception{
 		Comando c;
 		Partita p = new Partita();
 		IO io = new IOConsole ();
@@ -114,7 +132,7 @@ public class FabbricaDiComandiFisarmonicaTest {
 	
 	/** test comando fine parametro */
 	@Test
-	public void test_FineParametro() {
+	public void test_FineParametro() throws Exception{
 		Comando c;
 		Partita p = new Partita ();
 		IO io = new IOConsole ();

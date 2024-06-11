@@ -8,6 +8,7 @@ import java.util.Scanner;
  * */
 
 public class IOConsole implements IO{
+	Scanner scannerDiLinee;
 	
 	public void mostraMessaggioNoCapo(String msg) {
 		System.out.print(msg);
@@ -17,9 +18,12 @@ public class IOConsole implements IO{
 		System.out.println(msg);
 	}
 	public String leggiRiga() {
-		Scanner scannerDiLinee = new Scanner(System.in);
+		this.scannerDiLinee = new Scanner(System.in);
 		String riga = scannerDiLinee.nextLine();
 //		scannerDiLinee.close();
 		return riga;
+	}
+	public void chiudiScanner () {
+		this.scannerDiLinee.close();
 	}
 }

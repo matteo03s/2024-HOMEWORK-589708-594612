@@ -107,5 +107,12 @@ public class StanzaMagica extends Stanza {
 		return true; //((this.tipo.equals("MA1")) || (this.tipo.equals("MA2")));
 	}
 
+	public String getChiave () {
+		return null;
+	}
+	@Override
+	public int getSoglia() {
+		return this.sogliaMagica;
+	}
 
 }

@@ -8,16 +8,16 @@ import java.util.Iterator;
 import attrezz.Attrezzo;
 import giocatore.Borsa;
 
-public class ComandoBorsa implements Comando {
-	String nome = "borsa";
+public class ComandoBorsa extends AbstractComando {
+	
 	private String ordine;
 
 	/** costruttore senza parametro */
-	public ComandoBorsa () {	
-	}
+	public ComandoBorsa () { super ("borsa"); }
 
 	/** costruttore con parametro */
-	public ComandoBorsa (String parametro) {	
+	public ComandoBorsa (String parametro) {
+		super ("borsa");
 		this.ordine = parametro;
 	}
 
@@ -64,14 +64,8 @@ public class ComandoBorsa implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		this.ordine = parametro;
-
 	}
-
-	@Override
-	public String getNome() {
-		return this.nome;
-	}
-
+	
 	@Override
 	public String getParametro() {
 		return this.ordine;

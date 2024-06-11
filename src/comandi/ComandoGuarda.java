@@ -12,12 +12,11 @@ import diadia.IO;
 import diadia.Partita;
 import diadiaTest.*;
 
-public class ComandoGuarda implements Comando {
-
-	String nome = "guarda";
+public class ComandoGuarda extends AbstractComando {
 	
 	/** costruttore senza parametro */
 	public ComandoGuarda () {
+		super ("guarda");
 	}
 	
 	/** esecuzione comando 
@@ -30,31 +29,7 @@ public class ComandoGuarda implements Comando {
 		console.mostraMessaggio(partita.getGiocatore().toString());
 		partita.setIniziata();
 	}
-
-	/** imposta parametro 
-	 * @param parametro comando
-	 * */
-	@Override
-	public void setParametro(String parametro) {
-		
-		// corpo vuoto, questo comando non ha parametri
-	}
-
-	/** restituisce nome comando 
-	 * @return nome comando
-	 * */
-	@Override
-	public String getNome() {
-		return this.nome;
-	}
-
-	/** ottenere parametro 
-	 * @return nome parametro
-	 * */
-	@Override
-	public String getParametro() {
-		//ritorno nullo, questo comando non ha parametri
-		return null;
-	}
-
+	
+//	public String getNome() { return this.nome;	}
+	
 }

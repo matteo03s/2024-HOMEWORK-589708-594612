@@ -13,21 +13,20 @@ import diadia.IO;
 import diadia.Partita;
 import diadiaTest.*;
 
-public class ComandoPosa implements Comando {
+public class ComandoPosa extends AbstractComando {
 
-	String nome = "posa";
 	String nomeOggetto;
 
 	/** costruttore con parametro inserito
 	 * @param nome oggetto da posare
 	 * */
 	public ComandoPosa (String nomeOggetto) {
+		super ("posa");
 		this.nomeOggetto = nomeOggetto;
 	}
 
 	/** costruttore senza parametro */
-	public ComandoPosa () {
-	}
+	public ComandoPosa () { super ("posa");	}
 
 	/** esecuzione comando 
 	 * @param partita corrente
@@ -75,14 +74,6 @@ public class ComandoPosa implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		this.nomeOggetto = parametro;
-	}
-
-	/** restituisce nome comando 
-	 * @return nome "posa"
-	 * */
-	@Override
-	public String getNome() {
-		return this.nome;
 	}
 
 	/** restituisce il nome dell'oggetto da posare passato come parametro
