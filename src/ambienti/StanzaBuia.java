@@ -77,9 +77,4 @@ public class StanzaBuia extends Stanza {
 		}
 		return rimosso;
 	}
-	
-	public String getChiave () {
-		return this.parolachiave;
-	}
-	
 }

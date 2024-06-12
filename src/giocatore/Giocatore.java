@@ -1,6 +1,5 @@
 package giocatore;
 
-import diadia.*;
 /*
 * Classe giocatore - un giocatore in un gioco di ruolo.
 * il giocatore gestisce la borsa.
@@ -14,16 +13,15 @@ import diadia.*;
 
 public class Giocatore {
 
-	static final private int CFU_INIZIALI = Proprietà.getCFU();
+	static final private int CFU_INIZIALI = 20;
 	private int cfu;
-	Borsa borsa;
+	Borsa borsa = new Borsa();
 	
 	/** costruttore */
 	public Giocatore () {
 		this.cfu = CFU_INIZIALI;
-		borsa = new Borsa();
 	}
-
+	
 	/** metodo che restituisce la borsa del giocatore
 	 * @return borsa del giocatore
 	 * */

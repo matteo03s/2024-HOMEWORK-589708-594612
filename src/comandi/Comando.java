@@ -5,7 +5,6 @@ import diadiaTest.*;
 
 public interface Comando {
 
-	
 	/** esecuzione comando 
 	 * @param partita corrente
 	 * @param console per inserimento/stampa

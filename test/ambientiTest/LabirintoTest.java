@@ -15,7 +15,7 @@ import org.junit.Test;
  */
 
 public class LabirintoTest {
-	public Labirinto l = Labirinto.newLab();
+	public Labirinto l = new Labirinto();;
 	public Stanza s = new Stanza("Biblioteca");;
 
 	/** testare se la stanza corrente funziona correttamente*/
@@ -36,7 +36,6 @@ public class LabirintoTest {
 	@Test 
 	public void test_GetStanzaVincente() {
 		l.setStanzaCorrente(s);
-		l.setStanzaVincente(s);
 		assertEquals(l.getStanzaCorrente().getNome(),l.getStanzaVincente().getNome());
 	}
 	

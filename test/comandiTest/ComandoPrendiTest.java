@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ambienti.Labirinto;
+import ambienti.LabirintoBuilder;
 import ambienti.Stanza;
 import attrezz.*;
 import comandi.Comando;
@@ -23,7 +24,7 @@ public class ComandoPrendiTest {
 	@Before
 	public void SetUp () {
 		p = new Partita ();
-		monolocale = Labirinto.newBuilder()
+		monolocale = new LabirintoBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.getLabirinto();

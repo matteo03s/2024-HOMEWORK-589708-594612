@@ -13,20 +13,21 @@ import diadia.IO;
 import diadia.Partita;
 import diadiaTest.*;
 
-public class ComandoVai extends AbstractComando {
+public class ComandoVai implements Comando {
 
-	private Direzione direzione;
+	private String direzione;
+	String nome = "vai";
 	
 	/** costruttore con parametro inserito 
 	 * @param direzione
 	 * */
-	public ComandoVai (Direzione direzione) {
-		super ("vai");
+	public ComandoVai (String direzione) {
 		this.direzione = direzione;
 	}
 
 	/* costruttore senza parametro */
-	public ComandoVai () { super ("vai"); }
+	public ComandoVai () {
+	}
 
 	/** esecuzione comando 
 	 * @param partita corrente
@@ -62,16 +63,23 @@ public class ComandoVai extends AbstractComando {
 	 * */
 	@Override
 	public void setParametro(String parametro) {
-		this.direzione = Direzione.valueOf(parametro);
+		this.direzione = parametro;
 	}
 
+	/** restituisce nome comando 
+	 * @return nome "vai"
+	 * */
+	@Override
+	public String getNome() {
+		return this.nome;
+	}
 
 	/** restituisce il nome della direzione passata come parametro
 	 * @return nome parametro
 	 * */
 	@Override
 	public String getParametro() {
-		return this.direzione.toString();
+		return this.direzione;
 	}
 
 }

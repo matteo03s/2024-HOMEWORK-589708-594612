@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import attrezz.Attrezzo;
-import giocatore.AbstractPersonaggio;
 import giocatore.Borsa;
 
 /**
@@ -28,12 +27,11 @@ public class Stanza {
 	private String nome;
 	private List <Attrezzo> attrezzi;
 	private int numeroAttrezzi;
-	private Map <Direzione, Stanza> stanzeAdiacenti;
+	private Map <String, Stanza> stanzeAdiacenti;
 	//    private Stanza[] stanzeAdiacenti;
 	private int numeroStanzeAdiacenti;
 	//	private String[] direzioni;
 	private String tipo = "S";
-	private AbstractPersonaggio pers;
 
 
 	/**
@@ -48,7 +46,6 @@ public class Stanza {
 		//        this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		//        this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
 		this.attrezzi = new ArrayList<>();
-		this.pers = null;
 	}
 
 	/** restituisce il tipo della stanza
@@ -64,7 +61,7 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
 	 */
-	public void impostaStanzaAdiacente(Direzione direzione, Stanza stanza) {
+	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		this.stanzeAdiacenti.putIfAbsent(direzione, stanza);
 		this.numeroStanzeAdiacenti++;
 	}
@@ -74,7 +71,7 @@ public class Stanza {
 	 * @param direzione
 	 * @return stanza stanza adiacente
 	 */
-	public Stanza getStanzaAdiacente(Direzione direzione) {
+	public Stanza getStanzaAdiacente(String direzione) {
 		if (direzione == null)
 			return null;
 		if (this.getTipo().equals("BL1"))
@@ -124,7 +121,7 @@ public class Stanza {
 	/** metodo che restituisce la mappa delle stanze adiacenti
 	 * @return StanzeAdiacenti
 	 */
-	public Map <Direzione, Stanza> getMapStanzeAdiacenti () {
+	public Map <String, Stanza> getMapStanzeAdiacenti () {
 		return this.stanzeAdiacenti;
 	}
 	/**
@@ -139,8 +136,6 @@ public class Stanza {
 		risultato.append(this.stanzeAdiacenti.keySet());
 		risultato.append("\nAttrezzi nella stanza: ");
 		risultato.append(this.attrezzi);
-		if (this.pers != null)
-			risultato.append("\n" + this.pers.getDescrizione());
 		return risultato.toString();
 	}
 
@@ -187,8 +182,8 @@ public class Stanza {
 	/** restituisce le direzioni possibili dalla stanza corrente 
 	 * @return direzioni possibili dalla stanza corrente
 	 * */
-	public Set <Direzione> getDirezioni() {
-		Set <Direzione> direzioni = this.stanzeAdiacenti.keySet();
+	public Set <String> getDirezioni() {
+		Set <String> direzioni = this.stanzeAdiacenti.keySet();
 		return direzioni;
 	}
 
@@ -200,40 +195,11 @@ public class Stanza {
 		Attrezzo a = null;
 		return a;
 	}
-	
-	public String getChiave () {
-		return null;
-	}
 
-	/** permette di aggiungere un personaggio alla stanza
-	 * @param AbstractPersonaggio personaggio
-	 * */
-	public void SetPersonaggio (AbstractPersonaggio personaggio) {
-		this.pers = personaggio;
-	}
-	
-	/** restituisce il personaggio che si
-	 * trova nella stanza, null altrimenti
-	 * @return AbstractPersonaggio personaggio
-	 * */
-	public AbstractPersonaggio getPersonaggio () {
-		return this.pers;
-	}
-	
 	@Override
 	public boolean equals (Object o) {
 		Stanza that = (Stanza)o;	
 		return this.getNome().equals(that.getNome());
 	}
-
-	public int getSoglia() {
-		return 0;
-	}
-
-	public Direzione getDirBloccata() {
-		return null;
-	}
-
-
 
 }

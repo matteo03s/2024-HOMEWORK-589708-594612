@@ -4,14 +4,8 @@ import attrezz.*;
 import comandi.Comando;
 import comandi.FabbricaDiComandiFisarmonica;
 import comandiTest.*;
-import customException.FormatoFileNonValidoException;
 import giocatore.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Properties;
 import java.util.Scanner;
 
 
@@ -43,7 +37,6 @@ public class DiaDia {
 	
 	private Partita partita;
 	private IO console;
-	static public Properties prop;
 	
 	public DiaDia(IO io) {
 		this.partita = new Partita();
@@ -54,27 +47,10 @@ public class DiaDia {
 	public DiaDia(IO io, Labirinto lab) {
 		this.partita = new Partita(lab);
 		this.console = io;
-		prop = this.leggiProp();
 		
 	}
 
-	private Properties leggiProp() {
-		FileReader fileProp = null;
-		try {
-			fileProp = new FileReader ("diadia.properties");
-		} catch (FileNotFoundException e) {
-			System.out.println("bro non va");
-		}
-		Properties prop = new Properties();
-		try {
-			prop.load(fileProp);
-		} catch (IOException e) {
-			System.out.println("che succede fra");
-		}
-		return null;
-	}
-
-	public void gioca() throws Exception {
+	public void gioca() {
 		String istruzione; 
 		 this.console.mostraMessaggio(MESSAGGIO_BENVENUTO);
 		do		
@@ -87,9 +63,8 @@ public class DiaDia {
 	 * Processa una istruzione 
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
-	 * @throws Exception 
 	 */
-	private boolean processaIstruzione(String istruzione) throws Exception {
+	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica ();
 		
@@ -103,15 +78,50 @@ public class DiaDia {
 			this.console.mostraMessaggio("Hai esaurito i CFU");
 		
 		return this.partita.isFinita();	
+		/*
+		if (comandoDaEseguire.getNome() == (null)) { 
+			this.console.mostraMessaggio("Comando sconosciuto");
+		}
+		else {
+			if (comandoDaEseguire.getNome().equals("fine")) {
+				this.fine(); 
+				return true;
+			} else if (comandoDaEseguire.getNome().equals("vai"))
+				this.vai(comandoDaEseguire.getParametro());
+			else if (comandoDaEseguire.getNome().equals("aiuto"))
+				this.aiuto();
+			else if (comandoDaEseguire.getNome().equals("prendi") && this.iniziata != 0 && comandoDaEseguire.getParametro() != null)
+				this.prendi(comandoDaEseguire.getParametro());
+			else if (comandoDaEseguire.getNome().equals("borsa"))
+				this.stampaBorsa();
+			else if (comandoDaEseguire.getNome().equals("posa") && this.iniziata != 0 && comandoDaEseguire.getParametro() != null)
+				this.posa(comandoDaEseguire.getParametro());
+			else
+				this.console.mostraMessaggio("Comando sconosciuto");
+			}
+		*/
+		
 	}   
 
-	public static void main(String[] argc) throws Exception {
-		IO io= new IOConsole();		
-		Labirinto lab = Labirinto.newLab("Lab1.txt");
-		lab = lab.getLab();
-		try {
-			DiaDia gioco = new DiaDia(io, lab);
-			gioco.gioca();
-			} finally { io.chiudiScanner(); }
+	public static void main(String[] argc) {
+		IO io= new IOConsole();
+		Labirinto lab = new LabirintoBuilder()
+				.addStanzaIniziale("atrio")
+				.addAttrezzo("pala", 2)
+				.addAttrezzo("mano", 5)
+				.addAttrezzo("secchio",2)
+				.addAttrezzo("roba" , 1)
+				.addStanzaVincente("biblioteca")
+				.addAdiacenza("atrio", "biblioteca", "nord")
+				.addStanza("bagno")
+				.addAdiacenza("atrio", "bagno", "est")
+				.addAdiacenza("bagno", "atrio", "ovest")
+				.addStanza("ripostiglio")
+				.addAdiacenza("ripostiglio", "bagno","sud")
+				.addAdiacenza("bagno", "ripostiglio", "nord")
+
+				.getLabirinto();
+		DiaDia gioco = new DiaDia(io, lab);
+		gioco.gioca();
 	}
 }

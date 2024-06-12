@@ -1,6 +1,5 @@
 package giocatore;
 import attrezz.*;
-import diadia.Proprietà;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +24,7 @@ import ambienti.*;
  */
 
 public class Borsa {
-	public final static int DEFAULT_PESO_MAX_BORSA = Proprietà.getPesoMax();
+	public final static int DEFAULT_PESO_MAX_BORSA = 10;
 	//	private Map <String, Integer> attrezzi;
 	private List <Attrezzo> attrezzi;
 	private int numeroAttrezzi;

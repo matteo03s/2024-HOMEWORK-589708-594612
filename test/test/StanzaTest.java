@@ -1,4 +1,4 @@
-package ambientiTest;
+package test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import ambienti.Stanza;
 import org.junit.Before;
 import org.junit.Test;
 import attrezz.*;
-import diadiaTest.*;
+import diadia.*;
 import giocatore.*;
 
 import org.junit.Test;
@@ -32,14 +32,14 @@ public class StanzaTest {
 	Attrezzo a9 = new Attrezzo ("a9", 1);
 	Attrezzo a10 = new Attrezzo ("a10", 1);
 	
-	/** aggiunta di un attrezzo normale */
+	//aggiunta di un attrezzo normale
 	@Test
 	public void test_AddAttrezzo() {
 		this.stanza = new Stanza ("vuota");
 		assertTrue (this.stanza.addAttrezzo(a1));
 	}
 	
-	/** aggiunta di un attrezzo null */
+	//aggiunta di un attrezzo null
 	@Test
 	public void test_AddAttrezzo_Null () {
 		this.stanza = new Stanza ("nulla");
@@ -47,7 +47,25 @@ public class StanzaTest {
 		assertFalse (this.stanza.addAttrezzo(a1));
 	}
 	
-	/** rimozione di un attrezzo normale */
+	//aggiunta di troppi attrezzi
+	@Test
+	public void test_AddAttrezzo_Troppi () {
+		this.stanza = new Stanza ("eccessivi");
+		this.stanza.addAttrezzo(a1);
+		this.stanza.addAttrezzo(a2);
+		this.stanza.addAttrezzo(a3);
+		this.stanza.addAttrezzo(a4);
+		this.stanza.addAttrezzo(a5);
+		this.stanza.addAttrezzo(a6);
+		this.stanza.addAttrezzo(a7);
+		this.stanza.addAttrezzo(a8);
+		this.stanza.addAttrezzo(a9);
+		this.stanza.addAttrezzo(a10);
+		Attrezzo a11 = new Attrezzo ("n11", 2);
+		assertFalse (this.stanza.addAttrezzo(a11));
+	}
+	
+	//rimozione di un attrezzo normale
 	@Test
 	public void test_RemoveAttrezzo() {
 		this.stanza = new Stanza ("con a1");
@@ -55,7 +73,7 @@ public class StanzaTest {
 		assertTrue (this.stanza.removeAttrezzo(a1));
 	}
 	
-	/** rimozione di un attrezzo null */
+	//rimozione di un attrezzo null
 	@Test
 	public void test_RemoveAttrezzo_Null() {
 		this.stanza = new Stanza ("con a1 nullo");
@@ -64,7 +82,7 @@ public class StanzaTest {
 		assertFalse (this.stanza.removeAttrezzo(a1));
 	}
 	
-	/** rimozione di un attrezzo non presente */
+	//rimozione di un attrezzo non presente
 	@Test
 	public void test_RemoveAttrezzo_NonPresente() {
 		this.stanza = new Stanza ("con a1");
@@ -72,7 +90,7 @@ public class StanzaTest {
 		assertFalse (this.stanza.removeAttrezzo(a2));
 	}
 	
-	/** test getStanzaAdiacente */
+	//test getStanzaAdiacente
 	@Test
 	public void test_getStanzaAdiacente () {
 		this.stanza = new Stanza ("partenza");
@@ -82,7 +100,7 @@ public class StanzaTest {
 		assertEquals (vicina.getNome(), this.stanza.getStanzaAdiacente("sud").getNome());
 	}
 
-	/** test getStanzaAdiacente direzione nulla */
+	//test getStanzaAdiacente direzione nulla
 	@Test
 	public void test_getStanzaAdiacente_null () {
 		this.stanza = new Stanza ("partenza");
