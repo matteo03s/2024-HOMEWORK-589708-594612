@@ -144,16 +144,17 @@ public class Labirinto {
 	public List <AbstractPersonaggio> getPersonaggi () {
 		return this.pers;
 	}
+	// metodo per accedere al costruttore privato  di labirinto
+			public static LabirintoBuilder newBuilder() {
+				return new Labirinto().new LabirintoBuilder();
+			}
 //	public static LabirintoBuilder 
 //	newBuilder(){
 //		return new Labirinto().new LabirintoBuilder();
 //	}
 	//classe annidata
 	public class LabirintoBuilder {
-		// metodo per accedere al costruttore privato  di labirinto
-		public static LabirintoBuilder newBuilder() {
-			return new Labirinto().new LabirintoBuilder();
-		}
+		
 		private Map <String, Stanza> stanzeLabirinto = new HashMap <> ();
 		private Labirinto lab = new Labirinto ();
 		private Stanza ultimaStanza;

@@ -23,7 +23,7 @@ public class LabirintoBuilderTest {
 
 	@Before
 	public void setUp() throws Exception {
-		labirintoBuilder = Labirinto.LabirintoBuilder.newBuilder();
+		labirintoBuilder = Labirinto.newBuilder();
 	}
 
 	@Test

@@ -75,7 +75,7 @@ public Labirinto b;
 
 	public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
 		
-		this.labBuild =Labirinto.LabirintoBuilder.newBuilder();
+		this.labBuild =Labirinto.newBuilder();
 
 		this.nome2stanza = new HashMap<String,Stanza>();
 		this.attrezzi = new HashSet <Attrezzo> ();

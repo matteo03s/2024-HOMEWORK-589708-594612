@@ -29,17 +29,17 @@ public class ComandoVaiTest {
 	@Before
 	public void SetUp () {
 		p = new Partita ();
-		monolocale = Labirinto.LabirintoBuilder.newBuilder()
+		monolocale = Labirinto.newBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.getLabirinto();
-		bilocale = Labirinto.LabirintoBuilder.newBuilder()
+		bilocale = Labirinto.newBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.addStanzaVincente("biblioteca")
 				.addAdiacenza("start", "biblioteca", Direzione.nord)
 				.getLabirinto();
-		trilocale = Labirinto.LabirintoBuilder.newBuilder()
+		trilocale = Labirinto.newBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.addStanzaVincente("biblioteca")

@@ -23,7 +23,7 @@ public class ComandoPrendiTest {
 	@Before
 	public void SetUp () {
 		p = new Partita ();
-		monolocale = Labirinto.LabirintoBuilder.newBuilder()
+		monolocale = Labirinto.newBuilder()
 				.addStanzaIniziale("start")
 				.addAttrezzo("pala", 2)
 				.getLabirinto();
